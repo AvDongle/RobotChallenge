@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace RobotChallenge
 {
 	[TestFixture]
-	public class NUnitTestClass
+	public class RobotTestClass
 	{
 		Robot myRobot;
 
