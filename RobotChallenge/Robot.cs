@@ -6,9 +6,16 @@ namespace RobotChallenge
 	public class Robot
 	{
 		private Point _position = new Point(0,0);
+		public int _maxX, _maxY;
 
-		public Robot ()
+		public Robot () : this (5, 5)
 		{
+		}
+
+		public Robot(int MaxX, int MaxY)
+		{
+			_maxX = MaxX;
+			_maxY = MaxY;
 		}
 
 		public Point Position {
