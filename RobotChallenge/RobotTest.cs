@@ -82,5 +82,34 @@ namespace RobotChallenge
 			myRobot.Right ();
 			Assert.AreEqual (Direction.SOUTH, myRobot.Faced);
 		}
+
+		[Test]
+		public void RobotMove()
+		{
+			myRobot = new Robot ();
+			Assert.AreEqual (Direction.NORTH, myRobot.Faced);
+			Assert.AreEqual (-1, myRobot.Position.X);
+			Assert.AreEqual (-1, myRobot.Position.Y);
+			myRobot.Move ();
+			Assert.AreEqual (-1, myRobot.Position.X);
+			Assert.AreEqual (-1, myRobot.Position.Y);
+
+			myRobot.PlaceRobot (new Point (0, 0), Direction.NORTH);
+			myRobot.Move ();
+			Assert.AreEqual (new Point (0, 1), myRobot.Position);
+			myRobot.Move ();
+			Assert.AreEqual (new Point (0, 2), myRobot.Position);
+			myRobot.Right ();
+			myRobot.Move ();
+			Assert.AreEqual (new Point (1, 2), myRobot.Position);
+			myRobot.Right ();
+			myRobot.Move ();
+			Assert.AreEqual (new Point (1, 1), myRobot.Position);
+			myRobot.Right ();
+			myRobot.Move ();
+			Assert.AreEqual (new Point (0, 1), myRobot.Position);
+			myRobot.Move ();
+			Assert.AreEqual (new Point (0, 1), myRobot.Position);
+		}
 	}
 }
