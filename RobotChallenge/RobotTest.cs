@@ -53,9 +53,9 @@ namespace RobotChallenge
 		public void RobotPlace()
 		{
 			Assert.False (myRobot.IsPlaced);
-			myRobot.PlaceRobot (new Point(6, 6));
+			myRobot.PlaceRobot (new Point(6, 6), Direction.NORTH);
 			Assert.False (myRobot.IsPlaced);
-			myRobot.PlaceRobot (new Point (5, 5));
+			myRobot.PlaceRobot (new Point (5, 5), Direction.NORTH);
 			Assert.True (myRobot.IsPlaced);
 		}
 
@@ -63,6 +63,24 @@ namespace RobotChallenge
 		public void RobotFace()
 		{
 			Assert.AreEqual (Direction.NORTH, myRobot.Faced);
+		}
+
+		[Test]
+		public void RobotLeft()
+		{
+			myRobot.Left ();
+			Assert.AreEqual (Direction.WEST, myRobot.Faced);
+			myRobot.Left ();
+			Assert.AreEqual (Direction.SOUTH, myRobot.Faced);
+		}
+
+		[Test]
+		public void RobotRight()
+		{
+			myRobot.Right ();
+			Assert.AreEqual (Direction.EAST, myRobot.Faced);
+			myRobot.Right ();
+			Assert.AreEqual (Direction.SOUTH, myRobot.Faced);
 		}
 	}
 }
