@@ -13,12 +13,14 @@ namespace RobotChallenge
 		public void Setup()
 		{
 			myRobot = new Robot ();
+			myRobot.IsPlaced = true;
 		}
 
 		[Test]
 		public void RobotDefault()
 		{
 			Assert.IsNotNull (myRobot);
+			Assert.True (myRobot.IsPlaced);
 		}
 
 		[Test]

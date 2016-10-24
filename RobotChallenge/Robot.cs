@@ -7,6 +7,7 @@ namespace RobotChallenge
 	{
 		private Point _position = new Point(0,0);
 		public int _maxX, _maxY;
+		public bool _isPlaced = false;
 
 		public Robot () : this (5, 5)
 		{
@@ -23,8 +24,19 @@ namespace RobotChallenge
 				return _position;
 			}
 			set {
-				_position.X = (value.X <= _maxX && value.X >= 0) ? value.X : _position.X;
-				_position.Y = (value.Y <= _maxY && value.Y >= 0) ? value.Y : _position.Y;
+				if (IsPlaced) {
+					_position.X = (value.X <= _maxX && value.X >= 0) ? value.X : _position.X;
+					_position.Y = (value.Y <= _maxY && value.Y >= 0) ? value.Y : _position.Y;
+				}
+			}
+		}
+
+		public bool IsPlaced {
+			get {
+				return _isPlaced;
+			}
+			set {
+				_isPlaced = value;
 			}
 		}
 	}
