@@ -111,5 +111,12 @@ namespace RobotChallenge
 			myRobot.Move ();
 			Assert.AreEqual (new Point (0, 1), myRobot.Position);
 		}
+
+		[Test]
+		public void RobotReport()
+		{
+			myRobot.PlaceRobot (new Point (0, 0), Direction.NORTH);
+			StringAssert.AreEqualIgnoringCase ("0,0, NORTH", myRobot.Report ());
+		}
 	}
 }

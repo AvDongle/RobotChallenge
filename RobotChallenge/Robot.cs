@@ -50,6 +50,11 @@ namespace RobotChallenge
 			}
 		}
 
+		public string Report()
+		{
+			return Position.ToString () + ", " + Faced.ToString ();
+		}
+
 		public Point Position
 		{
 			get {
