@@ -23,7 +23,8 @@ namespace RobotChallenge
 				return _position;
 			}
 			set {
-				_position = value;
+				_position.X = (value.X <= _maxX && value.X >= 0) ? value.X : _position.X;
+				_position.Y = (value.Y <= _maxY && value.Y >= 0) ? value.Y : _position.Y;
 			}
 		}
 	}
