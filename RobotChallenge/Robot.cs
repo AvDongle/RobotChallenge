@@ -5,9 +5,9 @@ namespace RobotChallenge
 {
 	public class Robot
 	{
-		private Point _position = new Point(0,0);
+		private Point _position = new Point (-1, -1);
 		public int _maxX, _maxY;
-		public bool _isPlaced = false;
+		private Direction _faced = 0;
 
 		public Robot () : this (5, 5)
 		{
@@ -19,24 +19,38 @@ namespace RobotChallenge
 			_maxY = MaxY;
 		}
 
-		public Point Position {
+		public void PlaceRobot(Point startXY, Direction startDir )
+		{
+			Position = startXY;
+			_faced = startDir
+		}
+
+		public Point Position
+		{
 			get {
 				return _position;
 			}
 			set {
-				if (IsPlaced) {
-					_position.X = (value.X <= _maxX && value.X >= 0) ? value.X : _position.X;
-					_position.Y = (value.Y <= _maxY && value.Y >= 0) ? value.Y : _position.Y;
+				if (value.X <= _maxX && value.X >= 0 && value.Y <= _maxY && value.Y >= 0 ) {
+					_position.X = value.X;
+					_position.Y = value.Y;
 				}
 			}
 		}
 
-		public bool IsPlaced {
+		public bool IsPlaced 
+		{
 			get {
-				return _isPlaced;
+				return _position != new Point(-1,-1);
+			}
+		}
+
+		public Direction Faced {
+			get {
+				return _faced;
 			}
 			set {
-				_isPlaced = value;
+				_faced = value;
 			}
 		}
 	}

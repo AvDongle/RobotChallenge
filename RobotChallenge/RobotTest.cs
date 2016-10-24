@@ -13,21 +13,19 @@ namespace RobotChallenge
 		public void Setup()
 		{
 			myRobot = new Robot ();
-			myRobot.IsPlaced = true;
 		}
 
 		[Test]
 		public void RobotDefault()
 		{
 			Assert.IsNotNull (myRobot);
-			Assert.True (myRobot.IsPlaced);
 		}
 
 		[Test]
 		public void RobotPositionField()
 		{
-			Assert.AreEqual (0,myRobot.Position.X);
-			Assert.AreEqual (0,myRobot.Position.Y);
+			Assert.AreEqual (-1,myRobot.Position.X);
+			Assert.AreEqual (-1,myRobot.Position.Y);
 		}
 
 		[Test]
@@ -49,10 +47,22 @@ namespace RobotChallenge
 			myRobot.Position = new Point (-1, -1);
 			Assert.AreEqual (0, myRobot.Position.X);
 			Assert.AreEqual (0, myRobot.Position.Y);
-			myRobot.Position = new Point (6, 5);
-			Assert.AreEqual (0, myRobot.Position.X);
-			Assert.AreEqual (5, myRobot.Position.Y);
 		}
 
+		[Test]
+		public void RobotPlace()
+		{
+			Assert.False (myRobot.IsPlaced);
+			myRobot.PlaceRobot (new Point(6, 6));
+			Assert.False (myRobot.IsPlaced);
+			myRobot.PlaceRobot (new Point (5, 5));
+			Assert.True (myRobot.IsPlaced);
+		}
+
+		[Test]
+		public void RobotFace()
+		{
+			Assert.AreEqual (Direction.NORTH, myRobot.Faced);
+		}
 	}
 }
