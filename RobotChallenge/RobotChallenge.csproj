@@ -56,5 +56,9 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="test.txt" />
+    <None Include="test2.txt" />
+    <None Include="test3.txt" />
+    <None Include="test4.txt" />
   </ItemGroup>
 </Project>

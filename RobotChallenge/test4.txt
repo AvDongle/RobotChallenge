@@ -1,0 +1,9 @@
+eoirh
+ewr
+r2
+PLACE 0,0,NORTH
+MOVE
+wer
+1e31
+PLACE 1,1,EAST
+MOVE
