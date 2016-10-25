@@ -42,7 +42,7 @@ namespace RobotChallenge
 
 		public void Right()
 		{
-			Faced = ((int)Faced + 1 > Enum.GetValues(typeof(Direction)).Length) ? (Direction) 0 : (Faced + 1);
+			Faced = ((int)Faced + 1 > Enum.GetValues(typeof(Direction)).Length-1) ? (Direction) 0 : (Faced + 1);
 		}
 
 		public void Move()

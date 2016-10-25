@@ -10,7 +10,10 @@ namespace RobotChallenge
 
 		public override void Execute(Robot robot)
 		{
-			robot.Move ();
+			if (robot.IsPlaced)
+				robot.Move ();
+			else
+				Console.WriteLine ("Robot not Placed");
 		}
 	}
 }

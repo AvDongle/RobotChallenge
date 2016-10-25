@@ -49,6 +49,9 @@
     <Compile Include="ReportCommand.cs" />
     <Compile Include="PlaceCommand.cs" />
     <Compile Include="TurnCommand.cs" />
+    <Compile Include="PlaceCommandTest.cs" />
+    <Compile Include="MoveCommandTest.cs" />
+    <Compile Include="TurnTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
