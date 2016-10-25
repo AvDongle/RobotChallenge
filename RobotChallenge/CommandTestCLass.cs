@@ -59,6 +59,9 @@ namespace RobotChallenge
 			_processor.Process(_processor._commands [0], myRobot);
 			Assert.True (myRobot.IsPlaced);
 			Assert.AreEqual (new Point (0, 0), myRobot.Position);
+
+			_processor.Load(@"C:\Users\AvDongle\Documents\Curve Tomorrow\test2.txt");
+			Assert.AreEqual (4, _processor._commands.Count);
 		}
 
 

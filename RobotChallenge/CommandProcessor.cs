@@ -47,6 +47,7 @@ namespace RobotChallenge
 		public void Load(string filename = @"C:\Users\AvDongle\Documents\Curve Tomorrow\test.txt")
 		{
 			try{
+				_commands = new List<string>();
 				using (var reader = new StreamReader (filename)) {
 					string line;
 					while ((line = reader.ReadLine ()) != null) {
