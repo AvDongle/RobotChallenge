@@ -49,8 +49,18 @@ namespace RobotChallenge
 
 			_processor.Process ("REPORT", myRobot);
 			StringAssert.AreEqualIgnoringCase ("0,1, NORTH", _processor.Report.testmessage);
+		}
+
+		[Test]
+		public void CommandLoad()
+		{
+			_processor.Load ();
+			StringAssert.AreEqualIgnoringCase ("PLACE 0,0,NORTH", _processor._commands [0]);
+			_processor.Process(_processor._commands [0], myRobot);
+			Assert.True (myRobot.IsPlaced);
+			Assert.AreEqual (new Point (0, 0), myRobot.Position);
+		}
 
 
-		}			
 	}
 }

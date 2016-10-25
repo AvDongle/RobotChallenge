@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.IO;
+using System.Collections.Generic;
 
 namespace RobotChallenge
 {
@@ -9,6 +11,8 @@ namespace RobotChallenge
 		private PlaceCommand _place = new PlaceCommand();
 		private ReportCommand _report = new ReportCommand();
 		private TurnCommand _turn = new TurnCommand();
+
+		public List<string> _commands = new List<string>();
 
 		public CommandProcessor ()
 		{
@@ -39,7 +43,21 @@ namespace RobotChallenge
 				break;
 			}
 		}
-
+			
+		public void Load(string filename = @"C:\Users\AvDongle\Documents\Curve Tomorrow\test.txt")
+		{
+			try{
+				using (var reader = new StreamReader (filename)) {
+					string line;
+					while ((line = reader.ReadLine ()) != null) {
+						_commands.Add (line);
+					}
+				}
+			}
+			catch (Exception e){
+				Console.Error.WriteLine ("Error loading file: {0}", e.Message);
+			}
+		}
 
 		public ReportCommand Report {
 			get {
