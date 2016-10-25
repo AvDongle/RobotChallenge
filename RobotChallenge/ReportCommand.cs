@@ -4,16 +4,19 @@ namespace RobotChallenge
 {
 	public class ReportCommand: AbstractCommand
 	{
+		public string testmessage;
 		public ReportCommand ()
 		{
 		}
 
 		public override void Execute(Robot robot)
 		{
-			if (robot.IsPlaced)
+			if (robot.IsPlaced) {
 				Console.WriteLine (robot.Report ());
-			else
+				testmessage = robot.Report ();
+			} else {
 				Console.WriteLine ("Robot not Placed");
+			}
 		}
 	}
 }

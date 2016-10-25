@@ -41,6 +41,11 @@ namespace RobotChallenge
 		}
 
 
+		public ReportCommand Report {
+			get {
+				return _report;
+			}
+		}
 	}
 }
 
