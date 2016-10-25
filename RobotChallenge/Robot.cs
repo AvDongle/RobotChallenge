@@ -29,8 +29,10 @@ namespace RobotChallenge
 
 		public void PlaceRobot(Point startXY, Direction startDir )
 		{
+			Point tempPos = Position;
 			Position = startXY;
-			_faced = startDir;
+			if (Position != tempPos)
+				_faced = startDir;
 		}
 
 		public void Left()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace RobotChallenge
 {
@@ -36,15 +37,43 @@ namespace RobotChallenge
 			Assert.AreEqual (Direction.NORTH, myRobot.Faced);
 			Assert.AreEqual (-1, myRobot.Position.X);
 			Assert.AreEqual (-1, myRobot.Position.Y);
-			myRobot.Move ();
-			Assert.AreEqual (-1, myRobot.Position.X);
-			Assert.AreEqual (-1, myRobot.Position.Y);
 
 			myRobot.PlaceRobot (new Point (0, 0), Direction.NORTH);
 			move.Execute (myRobot);
 			Assert.AreEqual (new Point (0, 1), myRobot.Position);
 		}
 
+		[Test]
+		public void PlaceExecute()
+		{
+			place.Execute (myRobot, "0,0,NPORTH");
+			Assert.False (myRobot.IsPlaced);
+
+			place.Execute (myRobot, "a,0,NORTH");
+			Assert.False (myRobot.IsPlaced);
+
+			place.Execute (myRobot, "Curve Tomorrow");
+			Assert.False (myRobot.IsPlaced);
+
+			place.Execute (myRobot, "Curve Tomorrow Today");
+			Assert.False (myRobot.IsPlaced);
+
+			place.Execute (myRobot, "0,0,NORTH");
+			Assert.True (myRobot.IsPlaced);
+			Assert.AreEqual (new Point (0, 0), myRobot.Position);
+
+			place.Execute (myRobot, "5,5,South");
+			Assert.AreEqual (new Point (5, 5), myRobot.Position);
+			Assert.AreEqual (Direction.SOUTH, myRobot.Faced);
+
+			place.Execute (myRobot, "5,6,east");
+			Assert.AreEqual (new Point (5, 5), myRobot.Position);
+			Assert.AreEqual (Direction.SOUTH, myRobot.Faced);
+
+			place.Execute (myRobot, "5,4,east");
+			Assert.AreEqual (new Point (5, 4), myRobot.Position);
+			Assert.AreEqual (Direction.EAST, myRobot.Faced);
+		}
 			
 	}
 }

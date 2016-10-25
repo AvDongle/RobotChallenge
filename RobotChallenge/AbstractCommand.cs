@@ -6,7 +6,7 @@ namespace RobotChallenge
 	{
 		public AbstractCommand (){}
 		public virtual void Execute(Robot robot){}
-		public virtual void Execute(Robot robot, string[] text){}
+		public virtual void Execute(Robot robot, string text){}
 	}
 }
 
