@@ -8,13 +8,15 @@ namespace RobotChallenge
 	[TestFixture]
 	public class CommandTestClass
 	{
-		CommandProcessor _processor = new CommandProcessor();
+		CommandProcessor _processor;
 		Robot myRobot;
 
 		[SetUp]
 		public void Setup()
 		{
 			myRobot = new Robot ();
+			_processor = new CommandProcessor ();
+
 		}
 
 		[Test]
@@ -56,14 +58,47 @@ namespace RobotChallenge
 		{
 			_processor.Load ();
 			StringAssert.AreEqualIgnoringCase ("PLACE 0,0,NORTH", _processor._commands [0]);
-			_processor.Process(_processor._commands [0], myRobot);
+			_processor.Process (_processor._commands [0], myRobot);
 			Assert.True (myRobot.IsPlaced);
-			Assert.AreEqual (new Point (0, 0), myRobot.Position);
+		}
 
-			_processor.Load(@"C:\Users\AvDongle\Documents\Curve Tomorrow\test2.txt");
+		[Test]
+		public void CommandLoadProcesss()
+		{
+			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test2.txt");
 			Assert.AreEqual (4, _processor._commands.Count);
 		}
 
+		[Test]
+		public void CommandRun()
+		{
+			_processor.Load ();
+			_processor.Run (myRobot);
+			Assert.True (myRobot.IsPlaced);
+			Assert.AreEqual (new Point (0, 1), myRobot.Position);
+		}
+
+		[Test]
+		public void CommandRunErrortext()
+		{
+			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test3.txt");
+			_processor.Run (myRobot);
+			Assert.False (myRobot.IsPlaced);
+
+			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test4.txt");
+			_processor.Run (myRobot);
+			Assert.True (myRobot.IsPlaced);
+			Assert.AreEqual (Direction.EAST, myRobot.Faced);
+			Assert.AreEqual (new Point (2, 1), myRobot.Position);
+		}
+
+		[Test]
+		public void CommandRunNoFile()
+		{
+			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test5.txt");
+			_processor.Run (myRobot);
+			Assert.False (myRobot.IsPlaced);
+		}
 
 	}
 }

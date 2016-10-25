@@ -38,13 +38,22 @@ namespace RobotChallenge
 			case "REPORT":
 				_report.Execute (robot);
 				break;
+			case "LOAD":
+				if (data.Count > 1 && data [1] != "")
+					Load (data [1]);
+				else
+					Load();
+				break;
+			case "RUN":
+				Run (robot);
+				break;
 			default:
 				Console.WriteLine ("No {0} Command found", data [0]);
 				break;
 			}
 		}
 			
-		public void Load(string filename = @"C:\Users\AvDongle\Documents\Curve Tomorrow\test.txt")
+		public void Load(string filename = @"C:\Users\AvDongle\Documents\CurveTomorrow\test.txt")
 		{
 			try{
 				_commands = new List<string>();
@@ -58,6 +67,11 @@ namespace RobotChallenge
 			catch (Exception e){
 				Console.Error.WriteLine ("Error loading file: {0}", e.Message);
 			}
+		}
+
+		public void Run(Robot robot)
+		{
+			_commands.ForEach (c => Process (c, robot));
 		}
 
 		public ReportCommand Report {
