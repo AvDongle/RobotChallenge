@@ -63,9 +63,9 @@ namespace RobotChallenge
 		}
 
 		[Test]
-		public void CommandLoadProcesss()
+		public void CommandLoadParams()
 		{
-			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test2.txt");
+			_processor.Load(@"test2.txt");
 			Assert.AreEqual (4, _processor._commands.Count);
 		}
 
@@ -81,11 +81,11 @@ namespace RobotChallenge
 		[Test]
 		public void CommandRunErrortext()
 		{
-			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test3.txt");
+			_processor.Load(@"test3.txt");
 			_processor.Run (myRobot);
 			Assert.False (myRobot.IsPlaced);
 
-			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test4.txt");
+			_processor.Load(@"test4.txt");
 			_processor.Run (myRobot);
 			Assert.True (myRobot.IsPlaced);
 			Assert.AreEqual (Direction.EAST, myRobot.Faced);
@@ -95,7 +95,7 @@ namespace RobotChallenge
 		[Test]
 		public void CommandRunNoFile()
 		{
-			_processor.Load(@"C:\Users\AvDongle\Documents\CurveTomorrow\test5.txt");
+			_processor.Load(@"test5.txt");
 			_processor.Run (myRobot);
 			Assert.False (myRobot.IsPlaced);
 		}

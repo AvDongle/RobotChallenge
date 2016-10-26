@@ -53,7 +53,7 @@ namespace RobotChallenge
 			}
 		}
 			
-		public void Load(string filename = @"C:\Users\AvDongle\Documents\CurveTomorrow\test.txt")
+		public void Load(string filename = @"test.txt")
 		{
 			try{
 				_commands = new List<string>();
